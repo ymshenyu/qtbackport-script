@@ -19,7 +19,7 @@ def main():
 
     qtextra = []
 
-    build_options = 'export DEB_BUILD_OPTIONS="$(DEB_BUILD_OPTIONS) nocheck"\nexport DPKG_GENSYMBOLS_CHECK_LEVEL=0'
+    build_options = 'export DEB_BUILD_OPTIONS := $(DEB_BUILD_OPTIONS) nocheck\nexport DPKG_GENSYMBOLS_CHECK_LEVEL := 0'
 
     terminal_menu = TerminalMenu(['qtbase', 'qtextra'])
     main_sel = terminal_menu.show()
@@ -50,7 +50,7 @@ def main():
             if mode_sel == 1:
                 for line in fileinput.input(f'{i}/debian/rules', inplace=True):
                     sys.stdout.write(re.sub('.*DH_VERBOSE=1',
-                                            f'export DEB_BUILD_PROFILES=nodoc\n{build_options}',
+                                            f'export DEB_BUILD_PROFILES := nodoc\n{build_options}',
                                             line))
                 for line in fileinput.input(f'{i}/debian/control', inplace=True):
                     if 'nodoc' in line and 'Build-Profiles:' not in line:
