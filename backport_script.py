@@ -33,7 +33,7 @@ def main():
                 qtextra.append(qt_components)
             else:
                 break
-        command = f"apt-get source {' '.join(qtextra)}"
+        # command = f"apt-get source {' '.join(qtextra)}"
     if main_sel == 0:
         file_path = []
         dsc = []
@@ -53,7 +53,7 @@ def main():
                                             f'export DEB_BUILD_PROFILES=nodoc\n{build_options}',
                                             line))
                 for line in fileinput.input(f'{i}/debian/control', inplace=True):
-                    if 'nodoc' in line and not 'Build-Profiles:' in line:
+                    if 'nodoc' in line and 'Build-Profiles:' not in line:
                         pass
                     else:
                         sys.stdout.write(line)
