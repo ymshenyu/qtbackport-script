@@ -19,7 +19,7 @@ def main():
 
     qtextra = []
 
-    build_options = 'export DEB_BUILD_OPTIONS="nocheck noautodbgsym"\nexport DPKG_GENSYMBOLS_CHECK_LEVEL=0'
+    build_options = 'export DEB_BUILD_OPTIONS=nocheck\nexport DPKG_GENSYMBOLS_CHECK_LEVEL=0'
 
     terminal_menu = TerminalMenu(['qtbase', 'qtextra'])
     main_sel = terminal_menu.show()
